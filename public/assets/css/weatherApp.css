@@ -1,0 +1,91 @@
+body {
+  font: 13px 'Open Sans', "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+#myCarousel{
+  position: absolute;
+  top: 10%;
+  right: 2%;
+}
+
+#weather {
+  background-image: url('../img/backgrounds/clouds.jpg');
+  width: 400px;
+  height: 180px;
+  margin: 0px auto;
+  text-align: center;
+  text-transform: uppercase;
+
+}
+
+#weather h2 {
+  padding-top: 20px;
+  margin: 0 0 8px;
+  color: #fff;
+  font-size: 50px;
+  font-weight: 300;
+  text-align: center;
+  text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+#weather ul {
+  margin: 0;
+  padding: 0;
+}
+
+#weather li {
+  background: #fff;
+  background: rgba(255,255,255,0.90);
+  padding: 10px;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+#weather .currently {
+  margin: 0 20px;
+}
+
+#forecast {
+  background-image: url('../img/backgrounds/clouds.jpg');
+  width: 400px;
+  height: 180px;
+  margin: 0px auto;
+  text-align: center;
+  text-transform: uppercase;
+
+}
+
+#forecast h2 {
+  padding-top: 20px;
+  margin: 0 0 8px;
+  color: #fff;
+  font-size: 50px;
+  font-weight: 300;
+  text-align: center;
+  text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+#forecast ul {
+  margin: 0;
+  padding: 0;
+}
+
+#forecast li {
+  background: #fff;
+  background: rgba(255,255,255,0.90);
+  padding: 10px;
+  display: inline-block;
+  border-radius: 5px;
+}
+#forecast label{
+  /*background: #fff;
+  background: rgba(255,255,255,0.90);*/
+  padding-top: 5px;
+  color:black;
+  display: block;
+  border-radius: 5px;
+}
+
+#forecast .currently {
+  margin: 0 20px;
+}

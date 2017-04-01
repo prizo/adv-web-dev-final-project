@@ -1,0 +1,12 @@
+.groups{
+  position:fixed;
+  top:350px;
+  right: 50px;
+}
+h3#group{
+  position:fixed;
+  top:250px;
+  right: 350px;
+  border-bottom: solid;
+  border-width: thin;
+}
