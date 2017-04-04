@@ -17,6 +17,9 @@
   </div> <!--end of row-->
   <div class="row">
     <div class="col-md-12">
+      @if(count($workouts) <= 0)
+        <h3>No Workouts created</h3>
+      @else
       <table class="table">
           <thead>
             <th>#</th>
@@ -52,10 +55,11 @@
             @endforeach
           </tbody>
       </table>
-
       <div class="text-center">
         {!!$workouts->links()!!}
       </div>
+    @endif
+
     </div>
   </div>
 

@@ -52,10 +52,23 @@ class WorkoutController extends Controller
                 'title' => 'required|max:255',
                 'description' => 'required'
         ));
+
+        //validate each
+        // for($i = 1; $i <= 3; $i++){
+        //   $this->validate($request, array(
+        //           'workout'.$i.'' => 'required|max:255',
+        //           'sets'.$i.'' => 'required|numeric',
+        //           'reps'.$i.'' => 'required|numeric',
+        //
+        //   ));
+        // }
+
+
         //store in the database
         //laravel provides eloquent
         //you dont have to write mysql code like INSERT INTO ....
         $workout = new Workout;
+
 
         $workout->title = $request->title;
         // $post->slug = $request->slug;
@@ -64,6 +77,28 @@ class WorkoutController extends Controller
         $workout->username_id = $request->username_id;
 
         $workout->save();
+
+
+        //get workout info arrays
+        $workouts = $request->workout;
+        $sets = $request->sets;
+        $reps = $request->reps;
+
+
+        for($i = 0; $i < sizeof($workouts) ; $i++){
+          //instantiate new object for every database input
+          $workoutInfo = new WorkoutInfo;
+
+          $workoutInfo->name = $workouts[$i];
+          $workoutInfo->reps = $reps[$i];
+          $workoutInfo->sets = $sets[$i];
+
+          $workoutInfo->workout_id = $workout->id;
+
+          $workoutInfo->save();
+
+        }
+
 
         Session::flash('success', 'The Workout was successfuly saved!');
 
@@ -82,11 +117,7 @@ class WorkoutController extends Controller
         $workout = Workout::find($id); //find workout using id
 
         // print_r($id);
-        $workoutInfos = WorkoutInfo::where('workout_id', '=',$id)->first();
-
-        // print_r($workoutInfos->name);
-        // exit;
-
+        $workoutInfos = WorkoutInfo::where('workout_id', '=',$id)->get();
 
         return view('workouts.show')
                 ->with('workout', $workout)->with('workoutInfos', $workoutInfos);
@@ -102,9 +133,11 @@ class WorkoutController extends Controller
     {
       // find the post in the database and save it as a variable
       $workout = Workout::find($id);
+      $workoutInfos = WorkoutInfo::where('workout_id', '=',$id)->get();
+
 
       //return the view and pass in the variable we previously created
-      return view('workouts.edit')->with('workout', $workout);
+      return view('workouts.edit')->with('workout', $workout)->with('workoutInfos', $workoutInfos);;
     }
 
     /**
@@ -118,23 +151,6 @@ class WorkoutController extends Controller
     {
       //check if slug is changed
       $workout = Workout::find($id);
-      //$currentSlug = $post->slug;
-      //
-      // if ($request->input('slug') == $currentSlug) {
-      //   // validate data
-      //   $this->validate($request, array(
-      //           'title' => 'required|max:255',
-      //           'body' => 'required'
-      //   ));
-      // }
-      // else{
-      //   // validate data
-      //   $this->validate($request, array(
-      //           'title' => 'required|max:255',
-      //           'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
-      //           'body' => 'required'
-      //   ));
-      // }
 
       $this->validate($request, array(
               'title' => 'required|max:255',
@@ -148,6 +164,29 @@ class WorkoutController extends Controller
       $workout->description = $request->description;
 
       $workout->save();
+
+
+      // get workout info arrays from FORM
+      $workouts = $request->workout;
+      $sets = $request->sets;
+      $reps = $request->reps;
+
+
+      //get all workout infos from DATABASE
+      $workoutInfos = WorkoutInfo::where('workout_id', '=',$id)->get();
+
+
+      for($i = 0; $i < sizeof($workouts) ; $i++){
+
+        $workoutInfos[$i]->name = $workouts[$i];
+        $workoutInfos[$i]->reps = $reps[$i];
+        $workoutInfos[$i]->sets = $sets[$i];
+
+        $workoutInfos[$i]->workout_id = $workout->id;
+
+        $workoutInfos[$i]->save();
+
+      }
 
       // set flash data with success message
       Session::flash('success', "This post was successfuly saved."); //in _messages partial

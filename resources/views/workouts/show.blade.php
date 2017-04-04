@@ -7,12 +7,34 @@
 
   <div class="row">
       <div class="col-md-8">
+        {{-- <h1>{{$workoutInfos->name}}</h1> --}}
         <h1>{{$workout->title}}</h1>
-        {{-- <h1>{{$workoutInfos->workout}}</h1> --}}
 
         <p class="lead">
           {{$workout->description}}
         </p>
+        <table class="table">
+            <thead>
+              <th>Workout Name</th>
+              <th>Sets</th>
+              <th>Reps</th>
+            </thead>
+            <tbody>
+              @foreach($workoutInfos as $info)
+                <tr>
+                  <td>
+                    {{$info->name}}
+                  </td>
+                  <td>
+                    {{$info->sets}}
+                  </td>
+                  <td>
+                    {{$info->reps}}
+                  </td>
+                </tr>
+              @endforeach
+            </tbody>
+        </table>
       </div>
       <div class="col-md-4">
           <div class="well">

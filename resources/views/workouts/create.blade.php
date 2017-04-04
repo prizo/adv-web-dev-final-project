@@ -21,17 +21,18 @@
           {{-- {{Form::label('slug', 'Slug: ')}}
           {{Form::text('slug', null, array('class'=> 'form-control', 'required' => '', 'minlength' => '5',
             'maxlength' => '255'))}} --}}
-          {{Form::label('description', "Post Body: " )}}
+          {{Form::label('description', "Workout Information: " )}}
           {{Form::textarea('description', null, array('class' => "form-control", 'required' => ''))}}
           <br />
           @for($i = 1; $i <= 3; $i++)
-              {{Form::label("workout".$i, "Workout".$i) }}
-              {{Form::text("workout".$i, null, array('required' => '', 'maxlength' => '255'))}}
-              {{Form::label("sets".$i, 'Sets: ') }}
-              {{Form::text("sets".$i, null, array( 'required' => '', 'maxlength' => '255'))}}
-              {{Form::label("reps".$i, "Reps") }}
-              {{Form::text("reps".$i, null, array('required' => '', 'maxlength' => '255'))}}
-              <br />
+            <br />
+              {{Form::label("workout", "Workout".$i) }}
+              <input type="text" name="workout[]" required />
+              {{Form::label("sets", 'Sets: ') }}
+              <input type="text" name="sets[]" required />
+              {{Form::label("reps", "Reps: ") }}
+              <input type="text" name="reps[]" required />
+            <br />
           @endfor
 
 

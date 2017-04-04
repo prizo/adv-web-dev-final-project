@@ -6,19 +6,32 @@
 
   <div class="row">
      <!--- tells laravel to open an existing form model and connecting them-->
-    {!!Form::model($workout, array('route' => array('workouts.update', $workout->id), 'method' => 'PUT'))!!}
+    {!!Form::model($workoutInfos, array('route' => array('workouts.update', $workout->id), 'method' => 'PUT'))!!}
 
     <div class="col-md-8">
       <!--- make sure first paramater matches column in database -->
       {{Form::label('title', 'Title:')}}
-      {{Form::text('title', null, array('class' => 'form-control input-lg'))}}
+      {{Form::text('title', $workout->title, array('class' => 'form-control input-lg'))}}
       {{-- <hr />
       {{Form::label('slug', 'Slug: ')}}
       {{Form::text('slug', null, array('class'=> 'form-control', 'required' => '', 'minlength' => '5',
         'maxlength' => '255'))}} --}}
       <hr />
       {{Form::label('description', 'Body:')}}
-      {{Form::textarea('description', null, array('class' => 'form-control input-lg'))}}
+      {{Form::textarea('description', $workout->description, array('class' => 'form-control input-lg'))}}
+
+      <br />
+      @for($i = 1; $i <= 3; $i++)
+        <br />
+          {{Form::label("workout", "Workout".$i) }}
+          <input type="text" name="workout[]" value="{{$workoutInfos[$i-1]->name}}" required />
+          {{Form::label("sets", 'Sets: ') }}
+          <input type="text" name="sets[]" value="{{$workoutInfos[$i-1]->sets}}" required />
+          {{Form::label("reps", "Reps: ") }}
+          <input type="text" name="reps[]" value="{{$workoutInfos[$i-1]->reps}}" required />
+        <br />
+      @endfor
+
     </div>
     <div class="col-md-4">
         <div class="well">
