@@ -25,6 +25,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::get('workouts/all', 'WorkoutController@getWorkouts')->name('workouts.all');
-Route::resource('workouts', 'WorkoutController');
+Route::get('workouts/{workouts}', 'WorkoutController@show')->middleware('workout.check')->name('workouts.show');
+Route::resource('workouts', 'WorkoutController', ['except' => 'show']);
 
 Route::auth();

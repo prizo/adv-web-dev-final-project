@@ -28,7 +28,7 @@ class PagesController extends Controller
   public function getHome(){
     $user = Auth::user()->username;
     // create a variable and store all the blogs posts in it from the database
-    $workouts = Workout::where('username_id', $user)->orderBy('id', 'desc')->paginate(3);
+    $workouts = Workout::where('username_id', $user)->orderBy('updated_at', 'desc')->paginate(3);
 
 
     //return a view and pass in the above variable

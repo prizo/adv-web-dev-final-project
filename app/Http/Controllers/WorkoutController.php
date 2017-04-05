@@ -187,6 +187,10 @@ class WorkoutController extends Controller
         $workoutInfos[$i]->save();
 
       }
+      //need to manually update the time because if we make changes to
+      //the workoutinfo model it wont change the actual workout update bc no changes where
+      //made to that model only the workoutinfo model (our views rely on the workout model)
+      $workout->touch();
 
       // set flash data with success message
       Session::flash('success', "This post was successfuly saved."); //in _messages partial
