@@ -29,6 +29,8 @@
         </div>
       </div>
     @endif
-
+    <div class="col-md-4">
+      @include('partials/_carousel')
+    </div>
+  </div class="row">
   @endsection
-  @include('partials/_carousel')

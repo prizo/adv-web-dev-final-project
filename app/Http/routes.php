@@ -22,10 +22,16 @@ Route::group(['middleware' => 'auth'], function () {
 
   Route::get('home', 'PagesController@getHome');
 
+  Route::get('search', 'WorkoutController@search')->name('workouts.search');
+
+
 });
 
-Route::get('workouts/all', 'WorkoutController@getWorkouts')->name('workouts.all');
-Route::get('workouts/{workouts}', 'WorkoutController@show')->middleware('workout.check')->name('workouts.show');
-Route::resource('workouts', 'WorkoutController', ['except' => 'show']);
-
+//needs to be before {username}, if not it will think that "login" is a name and it will be
+//redirected to login and create an infinite loop
 Route::auth();
+
+Route::get('{username}', 'ProfileController@getProfile')->name('profile.get');
+Route::get('workouts/all', 'WorkoutController@getWorkouts')->name('workouts.all');
+Route::resource('workouts', 'WorkoutController', ['except' => 'show']);
+Route::get('workouts/{workouts}', 'WorkoutController@show')->middleware('workout.check')->name('workouts.show');

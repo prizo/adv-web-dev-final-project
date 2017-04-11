@@ -233,4 +233,20 @@ class WorkoutController extends Controller
       return view('workouts.index')->
           with('workouts', $workouts);
     }
+
+    public function search(){
+
+      $search = \Request::get('search');
+      $isEmpty = false;
+
+      if($search == ''){
+        $isEmpty = true;
+      }
+      $workouts = Workout::where('title', 'like', '%'.$search.'%')->orderBy('id')->paginate(2);
+
+      return view('workouts.search')
+              ->with('workouts', $workouts)
+              ->with('search', $search)
+              ->with('isEmpty', $isEmpty);
+    }
 }

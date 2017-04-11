@@ -3,9 +3,9 @@ body {
 }
 
 #myCarousel{
-  position: absolute;
-  top: 10%;
-  right: 2%;
+  position: relative;
+  top: -50px;
+  right: -10px;
 }
 
 #weather {

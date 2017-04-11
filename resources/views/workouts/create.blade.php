@@ -26,7 +26,7 @@
           <br />
           @for($i = 1; $i <= 3; $i++)
             <br />
-              {{Form::label("workout", "Workout".$i) }}
+              {{Form::label("workout", "Workout"." ".$i) }}
               <input type="text" name="workout[]" required />
               {{Form::label("sets", 'Sets: ') }}
               <input type="text" name="sets[]" required />

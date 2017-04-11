@@ -29,10 +29,13 @@
             <th></th>
           </thead>
           <tbody>
+            <?php $count = 1 ?>
             @foreach($workouts as $workout)
               <tr>
                 <th>
-                  {{$workout->id}}
+                  {{$count}}
+                  <?php $count++ ?>
+
                 </th>
                 <td>
                   {{$workout->title}}

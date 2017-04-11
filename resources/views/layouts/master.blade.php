@@ -12,6 +12,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   <script src="http://localhost/AdvWeb_Project/FiitHub/public/monkeecreate-jquery.simpleWeather-0d95e82/jquery.simpleWeather.min.js"></script> {{--simpleweather.js--}}
   <script src="http://localhost/AdvWeb_Project/FiitHub/public/assets/js/showApp.js"></script> {{--calls jquery--}}
+  <script src="http://localhost/AdvWeb_Project/Fiithub/public/assets/js/parsley.min.js"></script>
 
   <!-- Fonts -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
@@ -21,6 +22,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <link rel="stylesheet" href="/AdvWeb_Project/FiitHub/public/assets/css/weatherApp.css" />
   <link rel="stylesheet" href="/AdvWeb_Project/FiitHub/public/assets/css/home.css" />
+  <link rel="stylesheet" href="http://localhost/AdvWeb_Project/Fiithub/public/assets/css/parsley.css">
+
 
   @yield('stylesheets')
 
@@ -29,7 +32,7 @@
 
   <style>
   body {
-    font-family: 'Lato';
+    font-family: 'Open Sans';
   }
 
   .fa-btn {
@@ -37,7 +40,7 @@
   }
   </style>
 </head>
-<body id="app-layout">
+<body id="app-layout" >
   <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
       <div class="navbar-header">
@@ -63,14 +66,14 @@
       </ul> --}}
       @if (Auth::user())
         <div class="col-sm-6 col-md-6">
-          <form class="navbar-form" action="#" role="search">
+          {!!Form::open(array('data-parsley-validate' => '', 'route' => 'workouts.search', 'method' => 'GET', 'role'=> 'search', 'class'=>'navbar-form'))!!}
             <div class="input-group">
-              <input style="height: 30px;width: 400px;" type="text" class="form-control" placeholder="Search" name="q">
+              <input style="height: 30px;width: 400px;" type="text" class="form-control"  placeholder="Search" name="search" value=@yield('search')>
               <div class="input-group-btn">
                 <button style="height: 30px; width: 40px;" class="btn" type="submit"><label class="glyphicon glyphicon-search"></label></button>
               </div>
             </div>
-          </form>
+            {!!Form::close()!!}
         </div>
       @endif
 
