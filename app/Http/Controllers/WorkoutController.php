@@ -10,6 +10,8 @@ use App\Workout;
 use App\WorkoutInfo;
 use Session;
 use Auth;
+use App\Group;
+
 class WorkoutController extends Controller
 {
 
@@ -33,8 +35,12 @@ class WorkoutController extends Controller
      */
     public function create()
     {
-        //
-         return view('workouts.create');
+        //get Groups
+        $groups = Group::all();
+        $user = Auth::user();
+        $isAdmin = $user->isAdmin;
+
+         return view('workouts.create')->with('groups', $groups)->with('isAdmin', $isAdmin);
 
     }
 
@@ -75,6 +81,8 @@ class WorkoutController extends Controller
         $workout->description = $request->description;
 
         $workout->username_id = $request->username_id;
+
+        $workout->group_id = $request->group;
 
         $workout->save();
 
