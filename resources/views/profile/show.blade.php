@@ -3,7 +3,11 @@
 @section('title', 'Profile')
 
 @section('content')
-    <div class="col-md-8 col-md-offset-4">
+    <div class="col-md-3">
+      <img src="uploads/avatars/{{$user->avatar}}" style="width:150px; height:150px; border-radius:50%; margin-bottom: 20px; margin-right:25px;" />
+      <h3 style="padding-left: 15px">{{strtoupper($user->fname) }} {{strtoupper($user->lname)}}</h3>
+    </div>
+    <div class="col-md-9">
       @foreach($workouts as $workout)
         <div class="workout">
           <h3>{{$workout->title}}</h3>
@@ -21,5 +25,4 @@
         {!!$workouts->links()!!}
       </div>
   </div>
-
 @endsection

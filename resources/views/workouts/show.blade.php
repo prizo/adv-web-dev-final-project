@@ -13,6 +13,11 @@
         <p class="lead">
           {{$workout->description}}
         </p>
+        <p>
+          @if($workout->group_id != '3')
+            <a href="{{route('groups.show', $workout->group->name)}}">{{$workout->group->name}}</a>
+          @endif
+        </p>
         <table class="table">
             <thead>
               <th>Workout Name</th>

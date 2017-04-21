@@ -9,6 +9,8 @@ use App\Http\Requests;
 use App\Workout;
 use Auth;
 use App\User;
+use Image;
+use File;
 
 class PagesController extends Controller
 {
@@ -20,6 +22,33 @@ class PagesController extends Controller
     return view('pages.settings')->with('user', $user);
   }
 
+  public function update_avatar(Request $request){
+    $user = Auth::user();
+
+    //install image intervention
+
+    if($request->hasFile('avatar')){
+      $avatar = $request->file('avatar');
+      $filename = time() . '.jpg' ; //creating new file name
+      $path = public_path('uploads/avatars/' . $filename);
+
+      //delete previous image before uploading new one
+      if ($user->avatar !== 'default.png') {
+                $file = 'uploads/avatars/' . $user->avatar;
+
+                if (File::exists($file)) {
+                    unlink($file);
+                }
+
+            }
+      Image::make($avatar)->resize(300,300)->save($path);
+
+      $user->avatar = $filename;
+      $user->save();
+    }
+    return view('pages.settings')->with('user', $user);
+
+  }
   public function update(){
 
   }

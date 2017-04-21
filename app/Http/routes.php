@@ -19,6 +19,8 @@ Route::group(['middleware' => 'auth'], function () {
 
   Route::get('settings', 'PagesController@getSettings');
   Route::put('settings', 'PagesController@update')->name('user.update');
+  Route::post('settings', 'PagesController@update_avatar');
+
 
   Route::get('home', 'PagesController@getHome');
 
@@ -35,3 +37,5 @@ Route::get('{username}', 'ProfileController@getProfile')->name('profile.get');
 Route::get('workouts/all', 'WorkoutController@getWorkouts')->name('workouts.all');
 Route::resource('workouts', 'WorkoutController', ['except' => 'show']);
 Route::get('workouts/{workouts}', 'WorkoutController@show')->middleware('workout.check')->name('workouts.show');
+
+Route::get('groups/{groupname}', 'GroupController@getGroup')->middleware('group.check')->name('groups.show');
