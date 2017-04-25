@@ -5,6 +5,11 @@
 @section('content')
   <div class="col-md-3">
     <h1>{{$group->name}}</h1>
+    @if($isFollowing)
+      <a href="{{route('groups.unfollow', $group->id)}}" class="btn btn-primary btn-md">Unfollow</a>
+    @else
+      <a href="{{route('groups.follow', $group->id)}}" class="btn btn-primary btn-md">Follow</a>
+    @endif
 
   </div>
   <div class="col-md-9">

@@ -27,6 +27,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('search', 'WorkoutController@search')->name('workouts.search');
 
 
+
 });
 
 //needs to be before {username}, if not it will think that "login" is a name and it will be
@@ -34,8 +35,15 @@ Route::group(['middleware' => 'auth'], function () {
 Route::auth();
 
 Route::get('{username}', 'ProfileController@getProfile')->name('profile.get');
+
 Route::get('workouts/all', 'WorkoutController@getWorkouts')->name('workouts.all');
 Route::resource('workouts', 'WorkoutController', ['except' => 'show']);
 Route::get('workouts/{workouts}', 'WorkoutController@show')->middleware('workout.check')->name('workouts.show');
 
-Route::get('groups/{groupname}', 'GroupController@getGroup')->middleware('group.check')->name('groups.show');
+Route::get('groups/show/{groupname}', 'GroupController@getGroup')->middleware('group.check')->name('groups.show');
+Route::get('profile/{workout}', 'ProfileController@getUserWorkout')->name('profile.workouts');
+
+Route::get('groups/index', 'GroupController@index')->name('groups.index');
+
+Route::get('groups/follow/{groupid}', 'GroupController@followGroup')->name('groups.follow');
+Route::get('groups/unfollow/{groupid}', 'GroupController@unfollowGroup')->name('groups.unfollow');

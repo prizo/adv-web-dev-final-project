@@ -69,6 +69,7 @@
           {!!Form::open(array('data-parsley-validate' => '', 'route' => 'workouts.search', 'method' => 'GET', 'role'=> 'search', 'class'=>'navbar-form'))!!}
             <div class="input-group">
               <input style="height: 30px;width: 400px;" type="text" class="form-control"  placeholder="Search" name="search" value=@yield('search')>
+              <input type="hidden" name="type" value='workout'>
               <div class="input-group-btn">
                 <button style="height: 30px; width: 40px;" class="btn" type="submit"><label class="glyphicon glyphicon-search"></label></button>
               </div>
@@ -92,6 +93,7 @@
             <ul class="dropdown-menu" role="menu">
               <li><a href="{{ route('profile.get', Auth::user()->username)}}"><i class="fa fa-btn fa-sign-out"></i>Profile</a></li>
               <li><a href="{{ route('workouts.all') }}"><i class="fa fa-btn fa-anchor"></i>Workouts</a></li>
+              <li><a href="{{ route('groups.index') }}"><i class="fa fa-btn fa-anchor"></i>Groups</a></li>
               <li><a href="{{ url('/settings') }}"><i class="fa fa-btn fa-cogs"></i>Settings</a></li>
               <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
 

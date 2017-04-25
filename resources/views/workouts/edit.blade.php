@@ -21,6 +21,29 @@
       {{Form::textarea('description', $workout->description, array('class' => 'form-control input-lg'))}}
 
       <br />
+      <div class="form-group">
+        @if($isAdmin == '0')
+          <select size="1" name="group" required>
+              <option value="3">
+                  Miscellaneous
+              </option>
+          </select>
+        @else
+        <select size="2" name="group" required>
+          @foreach($groups as $group)
+            @if($group->id == $groupSelected)
+              <option value="{{$group->id}}" selected>
+                {{$group->name}}
+              </option>
+            @else
+            <option value="{{$group->id}}">
+              {{$group->name}}
+            </option>
+          @endif
+          @endforeach
+        </select>
+      @endif
+      </div>
       @for($i = 1; $i <= 3; $i++)
         <br />
           {{Form::label("workout", "Workout".$i) }}
@@ -56,7 +79,7 @@
           </div>
         </div>
     </div>
-    {!!Form::close()!!} <!--- !! bc we are not echoing it out just executing code -->
+    {!!Form::close()!!} <!--- !! bc we are not echoing it out, just executing code -->
   </div> <!---end of .row (form) -->
 
 @endsection
