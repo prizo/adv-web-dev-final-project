@@ -9,6 +9,9 @@ use App\Http\Requests;
 use App\Workout;
 use Auth;
 use App\User;
+use App\Group;
+use App\Follow;
+
 use Image;
 use File;
 
@@ -55,13 +58,20 @@ class PagesController extends Controller
 
 
   public function getHome(){
-    $user = Auth::user()->username;
+    $user = Auth::user();
     // create a variable and store all the blogs posts in it from the database
-    $workouts = Workout::where('username_id', $user)->orderBy('updated_at', 'desc')->paginate(3);
+    $workouts = Workout::where('username_id', $user->username)->orderBy('updated_at', 'desc')->paginate(3);
+
+    $following = Follow::where('user_id', $user->id)->get(); //get who the user is following
+
+    // foreach($following as $follow){
+    //   print_r($follow->group->name);
+    // }
 
 
     //return a view and pass in the above variable
-    return view('pages.home')->
-        with('workouts', $workouts);
+    return view('pages.home')
+          ->with('workouts', $workouts)
+          ->with('following', $following);
   }
 }

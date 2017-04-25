@@ -26,7 +26,7 @@ class WorkoutChecker
         $current_user = Auth::user()->username;
 
         if($current_user != $workout_owner){
-          return redirect()->route('workouts.all');
+          return redirect()->route('profile.workouts', $workout_id);
         }
         return $next($request);
     }

@@ -5,6 +5,13 @@
 
 @endif
 
+@if(Session::has('nosuccess'))
+  <div class="alert alert-danger" role="alert">
+    <strong>Alert:</strong> {{Session::get('nosuccess')}}
+  </div>
+
+@endif
+
 @if(count($errors)> 0)
   <div class="alert alert-danger" role="alert">
     <strong>Errors:</strong>
