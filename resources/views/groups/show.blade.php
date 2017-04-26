@@ -3,16 +3,23 @@
 @section('title', "| $group->name")
 
 @section('content')
+<div class="row">
   <div class="col-md-3">
-    <h1>{{$group->name}}</h1>
+    <div align="center">
+      <img src="/AdvWeb_Project/FiitHub/public/assets/img/sports/spartans.jpeg" style="width:150px; height:150px; margin:25px" />
+    </div>
+    <div align="center">
+      <h3>{{$group->name}}</h3>
+    </div>
     @if($isFollowing)
       <a href="{{route('groups.unfollow', $group->id)}}" class="btn btn-primary btn-md">Unfollow</a>
     @else
       <a href="{{route('groups.follow', $group->id)}}" class="btn btn-primary btn-md">Follow</a>
     @endif
-
   </div>
-  <div class="col-md-9">
+  <div class="col-md-6">
+    <h1>Workouts</h1>
+    <hr />
     @foreach($workouts as $workout)
       <div class="workout">
         <h3>{{$workout->title}}</h3>
@@ -30,5 +37,5 @@
       {!!$workouts->links()!!}
     </div>
   </div>
-
+</div>
 @endsection
