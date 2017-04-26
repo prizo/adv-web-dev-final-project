@@ -12,6 +12,11 @@ h3#group{
 }
 
 .groupFollow{
+<<<<<<< HEAD
+  border-width: medium;
+  border-style: solid;
+  border-color: blue;
+=======
   margin-top: 50px;
   margin-left: 10px;
   padding: 10px;
@@ -22,4 +27,5 @@ h3#group{
 
 .groupInfo{
 
+>>>>>>> 3e6c268de02ac23b49e26c14fe1b8b1c6b1a9361
 }
