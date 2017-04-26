@@ -33,7 +33,7 @@
 
                 {{strlen($workout->description) > 200 ? '...': ""}}
               </p>
-              <p>{{date('M j, Y h:i A', strtotime($workout->updated_at))}}</p>
+              <p class="pull-right">{{date('M j, Y h:i A', strtotime($workout->updated_at))}}</p>
 
               <a href="{{route('workouts.show', $workout->id)}}" class="btn btn-xs" style="color: #0366d6;
                 background-color: #fff;
@@ -60,7 +60,7 @@
               @else
                 @foreach($following as $follow)
                   <h4><a href="{{route('groups.show', $follow->group->name)}}">{{$follow->group->name}}</a></h4>
-                  <label>Last Updated: {{date('M j, Y h:i A', strtotime($follow->group->updated_at))}}</label>
+                  <label>Last Post: {{date('M j, Y h:i A', strtotime($follow->group->updated_at))}}</label>
                   <hr />
                 @endforeach
                 <label><a href="{{route('groups.index')}}">View all</a></label>
