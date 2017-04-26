@@ -4,7 +4,7 @@ jQuery(document).ready(function() {
     /*
         Fullscreen background
     */
-    $.backstretch("/AdvWeb_Project/Fiithub/public/assets/img/backgrounds/gymHome.jpg");
+    $.backstretch("/AdvWeb_Project/FiitHub/public/assets/img/backgrounds/gymHome.jpg");
 
     /*
         Form validation

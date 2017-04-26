@@ -3,6 +3,7 @@
 @section('title', '|  Search')
 
 @section('search', $search)
+
 @section('content')
   <div class="row">
     <div class="col-md-3">

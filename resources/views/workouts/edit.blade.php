@@ -44,17 +44,20 @@
         </select>
       @endif
       </div>
-      @for($i = 1; $i <= 3; $i++)
-        <br />
-          {{Form::label("workout", "Workout".$i) }}
-          <input type="text" name="workout[]" value="{{$workoutInfos[$i-1]->name}}" required />
-          {{Form::label("sets", 'Sets: ') }}
-          <input type="text" name="sets[]" value="{{$workoutInfos[$i-1]->sets}}" required />
-          {{Form::label("reps", "Reps: ") }}
-          <input type="text" name="reps[]" value="{{$workoutInfos[$i-1]->reps}}" required />
-        <br />
-      @endfor
-
+      <div class="table-responsive">
+          <table class="table" id="dynamic_field">
+            @for($i=0; $i < $array_length; $i++)
+              <tr>
+                <td><label>Exercise:</label></td>
+                <td><input type="text" name="workout[]" value="{{ $workoutInfos[$i]->name }}" class="form-control" required></td>
+                <td><label>Sets:</label></td>
+                <td><input type="text" name="sets[]" value="{{ $workoutInfos[$i]->sets }}" class="form-control" required></td>
+                <td><label>Reps:</label></td>
+                <td><input type="text" name="reps[]" value="{{ $workoutInfos[$i]->reps }}" class="form-control" required></td>
+              </tr>
+            @endfor
+          </table>
+        </div>
     </div>
     <div class="col-md-4">
         <div class="well">

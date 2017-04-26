@@ -46,7 +46,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/login') }}">
-                    FiitHub
+                    FiitHub&nbsp<span><img src="/AdvWeb_Project/FiitHub/public/assets/img/logo.png" height="30" width="26"></span>
                 </a>
             </div>
 

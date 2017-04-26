@@ -12,7 +12,14 @@ h3#group{
 }
 
 .groupFollow{
+  margin-top: 50px;
+  margin-left: 10px;
+  padding: 10px;
   border-width: medium;
   border-style: solid;
-  border-color: blue;
+  border-color: #4682B4;
+}
+
+.groupInfo{
+
 }

@@ -16,9 +16,10 @@
 
             {{strlen($workout->description) > 200 ? '...': ""}}
           </p>
-          <p>{{date('M j, Y h:i A', strtotime($workout->updated_at))}}</p>
+          <p class="pull-right">Updated: {{date('M j, Y h:i A', strtotime($workout->updated_at))}}</p>
 
           <a href="{{route('workouts.show', $workout->id)}}" class="btn btn-primary btn-xs">Read More</a>
+          <hr />
         </div>
       @endforeach
       <div class="text-center">

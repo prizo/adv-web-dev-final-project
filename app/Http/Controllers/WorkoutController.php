@@ -138,6 +138,7 @@ class WorkoutController extends Controller
     $isAdmin = $user->isAdmin;
     $groups = Group::all();
     $groupSelected = $workout->group_id;
+    $array_length = count($workoutInfos);
 
 
 
@@ -148,7 +149,8 @@ class WorkoutController extends Controller
     ->with('workoutInfos', $workoutInfos)
     ->with('isAdmin', $isAdmin)
     ->with('groups', $groups)
-    ->with('groupSelected', $groupSelected);
+    ->with('groupSelected', $groupSelected)
+    ->with('array_length', $array_length);
   }
 
   /**
@@ -263,13 +265,26 @@ class WorkoutController extends Controller
     if($search == ''){
       $isEmpty = true;
     }
-    $allFoundWorkouts = Workout::where('title', 'like', '%'.$search.'%')->get();
 
-    $workouts = Workout::where('title', 'like', '%'.$search.'%')->orderBy('id')->paginate(4);
+    if($isEmpty == false){
+      $allFoundWorkouts = Workout::where('title', 'like', '%'.$search.'%')->get();
 
-    $groups = Group::where('name', 'like', '%'.$search.'%')->paginate(4);
+      $workouts = Workout::where('title', 'like', '%'.$search.'%')->orderBy('id')->paginate(4);
 
-    $allFoundGroups = Group::where('name', 'like', '%'.$search.'%')->get();
+      $groups = Group::where('name', 'like', '%'.$search.'%')->paginate(4);
+
+      $allFoundGroups = Group::where('name', 'like', '%'.$search.'%')->get();
+
+    }
+    else{
+      $allFoundWorkouts=null;
+
+      $workouts= null;
+
+      $groups= null;
+
+      $allFoundGroups=null ;
+    }
 
 
       return view('workouts.search')

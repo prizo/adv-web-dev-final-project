@@ -60,14 +60,15 @@ class GroupController extends Controller
 
   public function followGroup($groupId){
 
-    if($groupId == 3){
-      return redirect()->route('groups.show', $groupName); //url only not actual "html" page\
-    }
-
     $user = Auth::user();
 
     $group = Group::find($groupId);
     $groupName = strtoupper($group->name);
+
+    if($groupId == 3){
+      return redirect()->route('groups.show', $groupName); //url only not actual "html" page\
+    }
+
 
     $following = Follow::where('user_id', $user->id)->where('group_id', $group->id)->first();
 
