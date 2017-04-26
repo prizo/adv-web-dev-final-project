@@ -6,7 +6,7 @@
 <div class="row">
   <div class="col-md-3">
     <div align="center">
-      <img src="/AdvWeb_Project/FiitHub/public/assets/img/sports/spartans.jpeg" style="width:150px; height:150px; margin:25px" />
+      <img src="/adv-web-dev-final-project/public/assets/img/sports/spartans.jpeg" style="width:150px; height:150px; margin:25px" />
     </div>
     <div align="center">
       <h3>{{$group->name}}</h3>

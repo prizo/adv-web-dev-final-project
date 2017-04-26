@@ -7,7 +7,7 @@ jQuery(document).ready(function() {
 <<<<<<< HEAD
     $.backstretch("/adv-web-dev-final-project/public/assets/img/backgrounds/gymHome.jpg");
 =======
-    $.backstretch("/AdvWeb_Project/FiitHub/public/assets/img/backgrounds/gymHome.jpg");
+    $.backstretch("/adv-web-dev-final-project/public/assets/img/backgrounds/gymHome.jpg");
 >>>>>>> 3e6c268de02ac23b49e26c14fe1b8b1c6b1a9361
 
     /*
