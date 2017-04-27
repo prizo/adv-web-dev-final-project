@@ -52,16 +52,51 @@ class PagesController extends Controller
     return view('pages.settings')->with('user', $user);
 
   }
-  public function update(){
-    $user::Auth::user();
-    $username = Auth::user()->username;
-    $password = Auth::user()->password;
-        public static function changePassword($username, $password){
-          DB::table('users')->insert(
-        ['id' => '$id', 'password' => $password]);
-        $user->save();
-    }
+  public function rules(array $data){
+
+    $messages = [
+      'current-password.required' => 'Please enter current password',
+      'password.required' => 'Please enter password',
+    ];
+
+    $validator = Validator::make($data, [
+      'current-password' => 'required',
+      'password' => 'required|same:password',
+      'password_confirmation' => 'required|same:password',
+    ], $messages);
+
+    return $validator;
   }
+  
+
+
+  public function update(Request $request){
+    if(Auth::Check()) {
+        $request_data = $request->All();
+        $validator = $this->rules($request_data);
+        if($validator->fails()) {
+          return response()->json(array('error' => $validator->getMessageBag()->toArray()), 400); }
+        else {
+
+          $current_password = Auth::User()->password;
+
+          if(Hash::check($request_data['current-password'], $current_password)) {
+            $user_id = Auth::User()->id;
+            $obj_user = User::find($id);
+            $obj_user->password = Hash::make($request_data['password']);;
+
+            $obj_user->save();
+
+            return "ok";  }
+          else {
+
+            $error = array('current-password' => 'Please enter correct current password');
+            return response()->json(array('error' => $error), 400); }
+              }
+                      }
+      else {
+        return redirect()->to('/'); }
+}
 
 
   public function getHome(){
