@@ -83,15 +83,15 @@
           @else
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                <span class="fa fa-btn fa-plus"> <span class="fa fa-btn fa-caret-down"></span>
+                <span class="glyphicon glyphicon-plus"></span> <span class="fa fa-btn fa-caret-down"></span>
               </a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="{{ url('/workouts/create') }}">New workout</a></li>
               </ul>
             </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                <span class="fa fa-btn fa-user"> <span class="fa fa-btn fa-caret-down"></span>
+            <li class="dropdown" style="margin-right: 10px;">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="padding-left: 8px;">
+                <span class="glyphicon glyphicon-user"></span> <span class="fa fa-btn fa-caret-down"></span>
               </a>
               <ul class="dropdown-menu" role="menu">
                 <li style="margin-top: 2px;"><a href="#" class="not-active">Signed in as <span style="font-weight: bold;">{{ (Auth::user()->username) }}</span></a></li>

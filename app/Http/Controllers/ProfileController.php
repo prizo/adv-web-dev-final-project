@@ -22,7 +22,7 @@ class ProfileController extends Controller
 
           $user = User::where('username', '=', $username)->get()->first();
 
-          $workouts = Workout::where('username_id', $username)->orderBy('updated_at', 'desc')->paginate(3);
+          $workouts = Workout::where('username_id', $username)->orderBy('updated_at', 'desc')->paginate(5);
 
           return view('profile.show')->with('user', $user)->with('workouts', $workouts);
       }

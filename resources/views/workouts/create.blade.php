@@ -27,15 +27,17 @@
             {{Form::text('description', null, array('class' => "form-control create-workout", 'style' => 'width: 700px', 'required' => ''))}}
             <hr />
 
+            {{Form::label('group', 'Group')}}
+            <br /><br />
             <div class="form-group">
               @if($isAdmin == '0')
                 <select name="group" class="selectpicker" required>
-                  <option value="3">
+                  <option value="11">
                     Miscellaneous
                   </option>
                 </select>
               @else
-                <select name="group" class="selectpicker show-tick" title="Select a group..." data-dropup-auto="false" required>
+                <select name="group" class="selectpicker show-tick" title="Select a group" data-dropup-auto="false" required>
                   @foreach($groups as $group)
                     <option value="{{$group->id}}">
                       {{$group->name}}
@@ -92,7 +94,7 @@
                                       <td><input type="text" name="sets[]" id="sets" class="form-control create-workout" style="width: 70px;" required></td>\
                                       <td><label>Reps</label></td>\
                                       <td><input type="text" name="reps[]" id="reps" class="form-control create-workout" style="width: 70px;" required></td>\
-                                      <td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove btn-sm btn-delete">X</button></td>\
+                                      <td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove btn-sm btn-delete"><span class="glyphicon glyphicon-remove"></span></button></td>\
                                     </tr>');
       });
       $(document).on('click', '.btn_remove', function(){

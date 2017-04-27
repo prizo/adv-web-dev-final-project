@@ -6,7 +6,7 @@
     @include('partials/_table')
     <div class="row">
       <div class="col-md-12">
-        <div class="panel panel-default">
+        <div class="panel panel-default" style="margin-top: 20px;">
           <div class="panel-heading" style="font-weight: 600; color: #586069; padding: 4px 15px 4px 15px; height: 48px;">
             <h4 style="margin-top: 3px;"><span style="font-weight: bold;">
               Your workouts

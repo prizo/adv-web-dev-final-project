@@ -25,7 +25,7 @@ class GroupController extends Controller
     $user = Auth::user();
 
 
-    $following = Follow::where('user_id', $user->id)->paginate(4); //get who the user is following
+    $following = Follow::where('user_id', $user->id)->paginate(5); //get who the user is following
 
     $groupsFollowing = array();
     foreach($following as $follow){
