@@ -49,7 +49,7 @@ class GroupController extends Controller
       $isFollowing = false;
     }
 
-    $workouts = Workout::where('group_id', $group->id)->orderBy('updated_at', 'desc')->paginate(5);
+    $workouts = Workout::where('group_id', $group->id)->orderBy('updated_at', 'desc')->paginate(4);
 
     return view('groups.show')
             ->with('group', $group)

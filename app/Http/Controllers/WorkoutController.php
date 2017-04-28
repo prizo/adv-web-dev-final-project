@@ -267,13 +267,13 @@ class WorkoutController extends Controller
     }
 
     if($isEmpty == false){
-      $allFoundWorkouts = Workout::where('title', 'like', '%'.$search.'%')->get();
-
       $workouts = Workout::where('title', 'like', '%'.$search.'%')->orderBy('id')->paginate(4);
 
-      $groups = Group::where('name', 'like', '%'.$search.'%')->paginate(4);
+      $allFoundWorkouts = count($workouts);
 
-      $allFoundGroups = Group::where('name', 'like', '%'.$search.'%')->get();
+      $groups = Group::where('name', 'like', '%'.$search.'%')->where('name', '!=', 'Miscellaneous')->paginate(4);
+
+      $allFoundGroups = count($groups);
 
     }
     else{
