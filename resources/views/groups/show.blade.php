@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-md-3" style="padding-left: 0px;">
         <div>
-          <img src="/adv-web-dev-final-project/public/assets/img/sports/spartans.jpeg" style="width: 229px; height: 230px; border-radius: 6px;" />
+          <img src="/adv-web-dev-final-project/public/assets/img/sports/{{$group->logo}}" style="width: 229px; height: 230px; border-radius: 6px;" />
         </div>
         <br />
         <div>

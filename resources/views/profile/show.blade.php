@@ -4,7 +4,7 @@
 
 @section('content')
     @include('partials/_table')
-    <div class="row">
+    <div class="row" style="margin-top: 20px;">
       <div class="col-md-3" style="padding-left: 0px;">
         <div>
           <img src="uploads/avatars/{{$user->avatar}}" style="width: 229px; height: 230px; border-radius: 6px;" />

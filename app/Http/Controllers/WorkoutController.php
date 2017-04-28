@@ -269,9 +269,9 @@ class WorkoutController extends Controller
     if($isEmpty == false){
       $allFoundWorkouts = Workout::where('title', 'like', '%'.$search.'%')->get();
 
-      $workouts = Workout::where('title', 'like', '%'.$search.'%')->orderBy('id')->paginate(4);
+      $workouts = Workout::where('title', 'like', '%'.$search.'%')->orderBy('id')->paginate(5);
 
-      $groups = Group::where('name', 'like', '%'.$search.'%')->paginate(4);
+      $groups = Group::where('name', 'like', '%'.$search.'%')->paginate(5);
 
       $allFoundGroups = Group::where('name', 'like', '%'.$search.'%')->get();
 

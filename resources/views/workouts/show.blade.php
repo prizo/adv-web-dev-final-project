@@ -12,7 +12,7 @@
         </p>
         <p>
           @if($workout->group_id != '11')
-            Group: <a href="{{route('groups.show', $workout->group->name)}}" style="color: #0366d6;">{{$workout->group->name}}</a>
+            <a href="{{route('groups.show', $workout->group->name)}}" style="color: #0366d6;">{{$workout->group->name}}</a>
           @endif
         </p>
         <br />

@@ -50,7 +50,7 @@
             <div class="panel-heading"><span style="font-weight: 600; font-size: 14px;">Groups</span></div>
             <div class="panel-body" style="padding: 0px;">
               @if(count($following) <= 0)
-                Not following any groups...
+                <p style="padding: 15px; margin-bottom: 0px;">Not following any groups...</p>
               @else
                 @foreach($following as $follow)
                   <h5 style="padding: 10px 15px;"><a href="{{route('groups.show', $follow->group->name)}}" style="color: #0366d6;">{{$follow->group->name}}</a></h5>
