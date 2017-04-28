@@ -4,13 +4,13 @@
 
 @section('content')
     <div class="row" style="margin-top: 20px;">
-      <div class="col-md-3" style="padding-left: 0px;">
+      <div class="col-md-3">
         <div>
           <img src="uploads/avatars/{{$user->avatar}}" style="width: 229px; height: 230px; border-radius: 6px;" />
         </div>
         <br />
         <div>
-          <form enctype="multipart/form-data" action="settings" method="POST">
+          <form enctype="multipart/form-data" method="POST" action="{{ url('/settings') }}">
             {{--<span class="name-custom">Change profile image</span><br /><br />--}}
             <div class="input-group">
                 <label class="input-group-btn">
@@ -20,17 +20,13 @@
                 </label>
                 <input type="text" class="form-control create-workout" style="margin-top: 0px; width: 157px;" readonly>
             </div><br />
+            <input type="hidden" name="form" value="1" />
             <input type="hidden" name="_token" value="{{csrf_token()}}" />
             <input type="submit" name="submit" value="Update" class="btn btn-success btn-workout">
           </form>
         </div>
       </div>
-
-      @if($errors->any())
-        <h3>{{$errors->first()}}</h3>
-      @endif
-
-      <div class="col-md-8" style="width: 648.33px;">
+      <div class="col-md-9" style="width: 648.33px; margin-left: 15px;">
         <h3 style="margin-top: 0px;">Change password</h3>
         <hr /><br />
         <form id="form-change-password" role="form" method="POST" action="{{ url('/settings') }}" novalidate class="form-horizontal">
@@ -57,7 +53,8 @@
           </div>
           <div class="form-group">
             <div class="col-sm-6" style="margin-left: 262px;">
-              <button type="submit" class="btn btn-success btn-workout">Change password</button>
+              <input type="hidden" name="form" value="2" />
+              <input type="submit" name="submit" value="Change password" class="btn btn-success btn-workout">
             </div>
           </div>
         </form>

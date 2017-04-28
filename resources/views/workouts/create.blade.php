@@ -8,8 +8,8 @@
 @endsection
 
 @section('content')
-    <div class="row">
-      <div class="col-md-8" style="float: none; margin: 0 auto; width: 700px; padding: 0px;">
+    <div class="row" style="margin-top: 20px;">
+      <div class="col-md-8 col-md-offset-2" style="width: 700px; padding: 0px;">
         <h3>Create a new workout</h3>
         <hr /><br />
         {!! Form::open(array('route' => 'workouts.store', 'data-parsley-validate' => '')) !!}

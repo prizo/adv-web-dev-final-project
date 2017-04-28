@@ -3,8 +3,8 @@
 @section('title', "| View Workout")
 
 @section('content')
-    <div class="row">
-      <div class="col-md-8" style="margin-top: 20px;">
+    <div class="row" style="margin-top: 20px;">
+      <div class="col-md-8">
         {{-- <h1>{{$workoutInfos->name}}</h1> --}}
         <h3 style="margin-top: 0px;">{{$workout->title}}</h3>
         <p style="padding-top: 10px; padding-bottom: 10px;">
@@ -42,7 +42,7 @@
         </div>
       </div>
       <div class="col-md-4">
-        <div class="well" style="padding-left: 0px; padding-right: 0px; padding-bottom: 0px; margin-top: 140px;">
+        <div class="well" style="padding-left: 0px; padding-right: 0px; padding-bottom: 0px; margin-top: 120px;">
           {{-- <dl class="dl-horizontal">
             <label>Url: </label>
             <p><a href="{{route('blog.single', $post->slug)}}">{{route('blog.single', $post->slug)}}</a></p>

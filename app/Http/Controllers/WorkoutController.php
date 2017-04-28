@@ -100,7 +100,7 @@ class WorkoutController extends Controller
     }
 
 
-    Session::flash('success', 'The Workout was successfuly saved!');
+    Session::flash('success', 'The workout has been created!');
 
     //redirect to another page
     return redirect()->route('workouts.show', $workout->id); //url only not actual "html" page
@@ -213,7 +213,7 @@ class WorkoutController extends Controller
     $workout->touch();
 
     // set flash data with success message
-    Session::flash('success', "This post was successfuly saved."); //in _messages partial
+    Session::flash('success', 'The workout has been updated!'); //in _messages partial
 
     // redirect with flash data to posts.show
     return redirect()->route('workouts.show', $workout->id); //url only not actual "html" page
@@ -237,7 +237,7 @@ class WorkoutController extends Controller
     $workout->delete();
 
     //show that it deleted using flash Session
-    Session::flash('success', 'The post was successfully deleted.');
+    Session::flash('success', 'The workout has been deleted!');
 
     //redirect to all posts aka index
     return redirect()->route('workouts.all');
@@ -269,7 +269,7 @@ class WorkoutController extends Controller
     if($isEmpty == false){
       $allFoundWorkouts = Workout::where('title', 'like', '%'.$search.'%')->get();
 
-      $workouts = Workout::where('title', 'like', '%'.$search.'%')->orderBy('id')->paginate(5);
+      $workouts = Workout::where('title', 'like', '%'.$search.'%')->orderBy('id')->paginate(3);
 
       $groups = Group::where('name', 'like', '%'.$search.'%')->paginate(5);
 

@@ -2,7 +2,7 @@
 
 @section('content')
     @include('partials/_table')
-    <div class="row" style="padding-left: 15px; padding-right: 15px;">
+    <div class="row" style="padding-left: 15px; padding-right: 15px; margin-top: 20px;">
       @if(count($workouts) <= 0)
         <div class="col-md-8" style="border: 2px dashed rgba(27,31,35,0.3); border-radius: 5px; padding: 30px; width: 648.33px;">
           <h3 style="padding-top: 0px; margin-top: 0px; font-weight: 600;">Activity Feed</h3>
@@ -16,7 +16,9 @@
         </div>
         <div class="col-md-4" style="padding-right: 0px; margin-left: 653.33px;">
           <div class="panel panel-default">
-            <div class="panel-heading"><span style="font-weight: bold;">Groups</span></div>
+            <div class="panel-heading"><span style="font-weight: 600; font-size: 14px;">
+              Groups <span class="Counter" style="color: #fff; background-color: rgba(47,54,61,0.5);">{{count($following)}}</span>
+            </span></div>
             <div class="panel-body">
               Not following any groups...
             </div>
@@ -47,7 +49,9 @@
         </div>
         <div class="col-md-4" style="padding-right: 0px; margin-left: 5px;">
           <div class="panel panel-default">
-            <div class="panel-heading"><span style="font-weight: 600; font-size: 14px;">Groups</span></div>
+            <div class="panel-heading"><span style="font-weight: 600; font-size: 14px;">
+              Groups <span class="Counter" style="color: #fff; background-color: rgba(47,54,61,0.5);">{{count($following)}}</span>
+            </span></div>
             <div class="panel-body" style="padding: 0px;">
               @if(count($following) <= 0)
                 <p style="padding: 15px; margin-bottom: 0px;">Not following any groups...</p>

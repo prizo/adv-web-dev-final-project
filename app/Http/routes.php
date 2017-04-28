@@ -19,7 +19,7 @@ Route::group(['middleware' => 'auth'], function () {
 
   Route::get('settings', 'PagesController@getSettings');
   Route::put('settings', 'PagesController@update')->name('user.update');
-  Route::post('settings', 'PagesController@update_avatar');
+  //Route::post('settings', 'PagesController@update_avatar');
   Route::post('settings', 'SettingsController@update')->name('user');
 
 

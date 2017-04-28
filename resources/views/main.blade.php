@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 @include('partials._head')
 @include('partials._javascript')
 <body>
@@ -9,8 +8,6 @@
     @yield('content')
     @include('partials._footer')
   </div> <!-- container-->
-
-
   @yield('scripts')
 </body>
 </html>

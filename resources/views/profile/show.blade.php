@@ -5,7 +5,7 @@
 @section('content')
     @include('partials/_table')
     <div class="row" style="margin-top: 20px;">
-      <div class="col-md-3" style="padding-left: 0px;">
+      <div class="col-md-3">
         <div>
           <img src="uploads/avatars/{{$user->avatar}}" style="width: 229px; height: 230px; border-radius: 6px;" />
         </div>
@@ -23,7 +23,7 @@
           </h5>
         </div>
       @else
-        <div class="col-md-9" style="border: 2px dashed rgba(27,31,35,0.3); border-radius: 5px; padding: 30px; width: 648.33px">
+        <div class="col-md-9" style="border: 2px dashed rgba(27,31,35,0.3); border-radius: 5px; padding: 30px; width: 648.33px; margin-left: 15px;">
           <h3 style="padding-top: 0px; margin-top: 0px; font-weight: 600;">Workouts</h3>
           <hr />
           @foreach($workouts as $workout)

@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <div class="row">
+    <div class="row" style="margin-top: 20px;">
        <!--- tells laravel to open an existing form model and connecting them-->
       {!!Form::model($workoutInfos, array('route' => array('workouts.update', $workout->id), 'method' => 'PUT'))!!}
 

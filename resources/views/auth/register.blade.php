@@ -14,7 +14,7 @@
                             <label for="fname" class="col-md-4 control-label">First Name</label>
 
                             <div class="col-md-6">
-                                <input id="fname" type="text" class="form-control" name="fname" value="{{ old('fname') }}">
+                                <input id="fname" type="text" class="form-control create-workout" name="fname" value="{{ old('fname') }}">
 
                                 @if ($errors->has('fname'))
                                     <span class="help-block">
@@ -27,7 +27,7 @@
                             <label for="lname" class="col-md-4 control-label">Last Name</label>
 
                             <div class="col-md-6">
-                                <input id="lname" type="text" class="form-control" name="lname" value="{{ old('lname') }}">
+                                <input id="lname" type="text" class="form-control create-workout" name="lname" value="{{ old('lname') }}">
 
                                 @if ($errors->has('lname'))
                                     <span class="help-block">
@@ -40,7 +40,7 @@
                             <label for="username" class="col-md-4 control-label">Username</label>
 
                             <div class="col-md-6">
-                                <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}">
+                                <input id="username" type="text" class="form-control create-workout" name="username" value="{{ old('username') }}">
 
                                 @if ($errors->has('username'))
                                     <span class="help-block">
@@ -54,7 +54,7 @@
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+                                <input id="email" type="email" class="form-control create-workout" name="email" value="{{ old('email') }}">
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -68,7 +68,7 @@
                             <label for="password" class="col-md-4 control-label">Password</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password">
+                                <input id="password" type="password" class="form-control create-workout" name="password">
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -82,7 +82,7 @@
                             <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
+                                <input id="password-confirm" type="password" class="form-control create-workout" name="password_confirmation">
 
                                 @if ($errors->has('password_confirmation'))
                                     <span class="help-block">
