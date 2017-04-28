@@ -7,9 +7,6 @@ jQuery(document).ready(function() {
 
     $.backstretch("/adv-web-dev-final-project/public/assets/img/backgrounds/gymHome.jpg");
 
-    $.backstretch("/adv-web-dev-final-project/public/assets/img/backgrounds/gymHome.jpg");
-
-
     /*
         Form validation
     */
