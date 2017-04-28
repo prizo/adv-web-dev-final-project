@@ -25,7 +25,7 @@ class GroupController extends Controller
     $user = Auth::user();
 
 
-    $following = Follow::where('user_id', $user->id)->paginate(4); //get who the user is following
+    $following = Follow::where('user_id', $user->id)->paginate(5); //get who the user is following
 
     $groupsFollowing = array();
     foreach($following as $follow){
@@ -65,7 +65,7 @@ class GroupController extends Controller
     $group = Group::find($groupId);
     $groupName = strtoupper($group->name);
 
-    if($groupId == 3){
+    if($groupId == 11){
       return redirect()->route('groups.show', $groupName); //url only not actual "html" page\
     }
 
@@ -73,7 +73,7 @@ class GroupController extends Controller
     $following = Follow::where('user_id', $user->id)->where('group_id', $group->id)->first();
 
     if(count($following) > 0){ //if a user is trying to manually follow via url and is already following
-      Session::flash('nosuccess', "You are already following $groupName");
+      Session::flash('nosuccess', "You are already following $groupName!");
       return redirect()->route('groups.show', $groupName); //url only not actual "html" page
     }
     $follow = new Follow;
@@ -105,7 +105,7 @@ class GroupController extends Controller
 
     $following->delete();
 
-    Session::flash('success', "You have successfully unfollowed $groupName!");
+    Session::flash('success', "You have unfollowed $groupName!");
 
     return redirect()->route('groups.show', $groupName); //url only not actual "html" page
 

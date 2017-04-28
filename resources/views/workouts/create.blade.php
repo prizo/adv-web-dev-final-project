@@ -3,13 +3,13 @@
 @section('title', "| Create Workout")
 
 @section('stylesheets')
-  <link rel="stylesheet" href="http://localhost/AdvWeb_Project/FiitHub/public/assets/css/parsley.css">
+  <link rel="stylesheet" href="http://localhost/adv-web-dev-final-project/public/assets/css/parsley.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
 @endsection
 
 @section('content')
-    <div class="row">
-      <div class="col-md-8" style="float: none; margin: 0 auto; width: 700px; padding: 0px;">
+    <div class="row" style="margin-top: 20px;">
+      <div class="col-md-8 col-md-offset-2" style="width: 700px; padding: 0px;">
         <h3>Create a new workout</h3>
         <hr /><br />
         {!! Form::open(array('route' => 'workouts.store', 'data-parsley-validate' => '')) !!}
@@ -27,15 +27,17 @@
             {{Form::text('description', null, array('class' => "form-control create-workout", 'style' => 'width: 700px', 'required' => ''))}}
             <hr />
 
+            {{Form::label('group', 'Group')}}
+            <br /><br />
             <div class="form-group">
               @if($isAdmin == '0')
                 <select name="group" class="selectpicker" required>
-                  <option value="3">
+                  <option value="11">
                     Miscellaneous
                   </option>
                 </select>
               @else
-                <select name="group" class="selectpicker show-tick" title="Select a group..." data-dropup-auto="false" required>
+                <select name="group" class="selectpicker show-tick" title="Select a group" data-dropup-auto="false" required>
                   @foreach($groups as $group)
                     <option value="{{$group->id}}">
                       {{$group->name}}
@@ -78,7 +80,7 @@
 @endsection
 
 @section('scripts')
-    <script src="http://localhost/AdvWeb_Project/FiitHub/public/assets/js/parsley.min.js"></script>
+    <script src="http://localhost/adv-web-dev-final-project/public/assets/js/parsley.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
     <script>
     $(document).ready(function(){
@@ -92,7 +94,7 @@
                                       <td><input type="text" name="sets[]" id="sets" class="form-control create-workout" style="width: 70px;" required></td>\
                                       <td><label>Reps</label></td>\
                                       <td><input type="text" name="reps[]" id="reps" class="form-control create-workout" style="width: 70px;" required></td>\
-                                      <td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove btn-sm btn-delete">X</button></td>\
+                                      <td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove btn-sm btn-delete"><span class="glyphicon glyphicon-remove"></span></button></td>\
                                     </tr>');
       });
       $(document).on('click', '.btn_remove', function(){

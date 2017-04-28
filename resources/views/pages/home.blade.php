@@ -1,48 +1,46 @@
 @extends('layouts.master')
+
 @section('content')
     @include('partials/_table')
-    <div class="row" style="padding-left: 15px; padding-right: 15px;">
+    <div class="row" style="padding-left: 15px; padding-right: 15px; margin-top: 20px;">
       @if(count($workouts) <= 0)
         <div class="col-md-8" style="border: 2px dashed rgba(27,31,35,0.3); border-radius: 5px; padding: 30px; width: 648.33px;">
-          <h1 style="padding-top: 0px; margin-top: 0px;">Activity Feed</h1>
+          <h3 style="padding-top: 0px; margin-top: 0px; font-weight: 600;">Activity Feed</h3>
           <hr />
-          <h3>
+          <h5>
             No activity...
-          </h3>
+          </h5>
         </div>
         <div class="col-md-4" style="padding-right: 0px; margin-bottom: 20px; margin-left: 5px;">
           @include('partials/_carousel')
         </div>
         <div class="col-md-4" style="padding-right: 0px; margin-left: 653.33px;">
           <div class="panel panel-default">
-            <div class="panel-heading"><span style="font-weight: bold;">Groups</span></div>
+            <div class="panel-heading"><span style="font-weight: 600; font-size: 14px;">
+              Groups <span class="Counter" style="color: #fff; background-color: rgba(47,54,61,0.5);">{{count($following)}}</span>
+            </span></div>
             <div class="panel-body">
-
+              Not following any groups...
             </div>
           </div>
         </div>
       @else
         <div class="col-md-8" style="border: 2px dashed rgba(27,31,35,0.3); border-radius: 5px; padding: 30px; width: 648.33px;">
-          <h1 style="padding-top: 0px; margin-top: 0px;">Activity Feed</h1>
+          <h3 style="padding-top: 0px; margin-top: 0px; font-weight: 600;">Activity Feed</h3>
           <hr />
           @foreach($workouts as $workout)
             <div class="workout">
-              <h3>{{$workout->title}}</h3>
-              <p>
+              <h5><a href="{{route('workouts.show', $workout->id)}}" style="color: #0366d6;">{{$workout->title}}</a></h5>
+              <p style="padding-top: 10px; padding-bottom: 10px;">
                 {{substr($workout->description, 0 , 200)}}
 
                 {{strlen($workout->description) > 200 ? '...': ""}}
               </p>
-              <p class="pull-right">{{date('M j, Y h:i A', strtotime($workout->updated_at))}}</p>
-
-              <a href="{{route('workouts.show', $workout->id)}}" class="btn btn-xs" style="color: #0366d6;
-                background-color: #fff;
-                border: 1px solid rgba(27,31,35,0.2);
-                border-radius: 0.25em;">Read More</a>
+              <p><span style="font-weight: bold;">Updated on: </span>{{date('M j, Y h:i A', strtotime($workout->updated_at))}}</p>
             </div>
             <hr />
           @endforeach
-          <div class="text-center" style="height: 60px;">
+          <div class="text-center">
             {!!$workouts->links()!!}
           </div>
         </div>
@@ -51,19 +49,21 @@
         </div>
         <div class="col-md-4" style="padding-right: 0px; margin-left: 5px;">
           <div class="panel panel-default">
-            <div class="panel-heading"><span style="font-weight: 600; font-size: 14px;">Groups</span></div>
-            <div class="panel-body">
+            <div class="panel-heading"><span style="font-weight: 600; font-size: 14px;">
+              Groups <span class="Counter" style="color: #fff; background-color: rgba(47,54,61,0.5);">{{count($following)}}</span>
+            </span></div>
+            <div class="panel-body" style="padding: 0px;">
               @if(count($following) <= 0)
-                <p>
-                  Not following any groups...
-                </p>
+                <p style="padding: 15px; margin-bottom: 0px;">Not following any groups...</p>
               @else
                 @foreach($following as $follow)
-                  <h4><a href="{{route('groups.show', $follow->group->name)}}">{{$follow->group->name}}</a></h4>
-                  <label>Last Post: {{date('M j, Y h:i A', strtotime($follow->group->updated_at))}}</label>
-                  <hr />
+                  <h5 style="padding: 10px 15px;"><a href="{{route('groups.show', $follow->group->name)}}" style="color: #0366d6;">{{$follow->group->name}}</a></h5>
+                  <p style="padding-left: 15px;"><span style="font-weight: bold;">Last post: </span>{{date('M j, Y h:i A', strtotime($follow->group->updated_at))}}</p>
+                  <hr style="margin: 0px;" />
                 @endforeach
-                <label><a href="{{route('groups.index')}}">View all</a></label>
+                @if(count($following) > 3)
+                  <a href="{{route('groups.index')}}" class="btn btn-default btn-xs" style="color: black; margin: 15px;">View all</a>
+                @endif
               @endif
             </div>
           </div>
