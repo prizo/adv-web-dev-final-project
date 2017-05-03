@@ -88,7 +88,7 @@
             @endforeach
             <div class="text-center">
               {{-- not working --}}
-              {!!$groups->appends(['search' => Request::get("search")])->links()!!}
+              {!!$groups->appends(['search' => Request::get("search"), 'type' => 'group'])->links()!!}
             </div>
           </div>
         @endif
